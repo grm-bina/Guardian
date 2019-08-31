@@ -1,0 +1,31 @@
+﻿<views:MvxWindowsPage
+    x:Class="GuardianProj.UWP.Views.HomeView"
+    xmlns:views="using:MvvmCross.Platforms.Uap.Views"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuardianProj.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:GuardianProj.Core.Models"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="navigationSectionTemplate" x:DataType="models:Section">
+            <TextBlock Text="{Binding WebTitle}" />
+        </DataTemplate>
+    </Page.Resources>
+
+    <NavigationView x:Name="navView" MenuItemsSource="{Binding Sections}" MenuItemTemplate="{StaticResource navigationSectionTemplate}" ItemInvoked="NavigationView_ItemInvoked" IsPaneOpen="True" IsSettingsVisible="False" IsBackEnabled="{Binding CanGoBack}" BackRequested="NavigationView_BackRequested">
+        <NavigationView.Header>
+            <TextBlock Text="{Binding SelectedSection.WebTitle}" FontSize="26" FontWeight="Bold"/>
+        </NavigationView.Header>
+        <Frame x:Name="ContentFrame">
+            
+        </Frame>
+
+    </NavigationView>
+</views:MvxWindowsPage>
+    
+    
+    
+
